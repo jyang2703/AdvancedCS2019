@@ -243,10 +243,11 @@ public class Conversion2 {
 				if (addedOne == false && ch[i] == '1') { // if everything before is 0, this is the first "one" that the
 															// code reads (right to left)
 					addedOne = true;
-
-				} else if (addedOne && ch[i] == 0) {
+				} 
+				
+				if (addedOne && ch[i] == '0') {
 					ch[i] = 1;
-				} else if (addedOne && ch[i] == 1) {
+				} else if (addedOne && ch[i] == '1') {
 					ch[i] = 0;
 				}
 
