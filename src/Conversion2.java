@@ -146,12 +146,18 @@ public class Conversion2 {
 		String binString = "";
 		int binary = 0;
 		int count = 0;
-
+		if(input <0 ) {
+			input*=-1;
+		}
 		int intPart = (int) input;
+		
 		double doubleValue = (double) input;
+		
+
+		
 		BigDecimal dfloatPart = BigDecimal.valueOf(input).subtract(BigDecimal.valueOf((int) input));
 		double decimalPart = dfloatPart.doubleValue();
-
+		
 		while (intPart > 0) {
 			binary = intPart % 2;
 			if (binary == 1) {
@@ -161,6 +167,7 @@ public class Conversion2 {
 			binString = binary + "" + binString;
 			intPart = intPart / 2;
 		}
+		
 
 		binString = binString + ('.');
 
@@ -208,6 +215,7 @@ public class Conversion2 {
 
 		long binary = 0;
 		int count = 0;
+
 		if (num >= 0) {
 			while (num > 0) {
 				binary = num % 2;
@@ -240,21 +248,35 @@ public class Conversion2 {
 			boolean addedOne = false;
 
 			for (int i = binString.length() - 1; i >= 0; i--) {
-				if (addedOne == false && ch[i] == '1') { // if everything before is 0, this is the first "one" that the
-															// code reads (right to left)
-					addedOne = true;
-				} 
-				
-				if (addedOne && ch[i] == '0') {
-					ch[i] = 1;
-				} else if (addedOne && ch[i] == '1') {
-					ch[i] = 0;
+				if (ch[i] == '0') {
+					ch[i] = '1';
+				} else {
+					ch[i] = '0';
 				}
 
 			}
+
+			if (ch[binString.length() - 1] == '0') {
+
+				ch[binString.length() - 1] = '1';
+			} else {
+				
+				ch[binString.length() - 1] = '0';
+				for (int i = binString.length() - 1; i >= 0; i--) {
+					if(ch[i] == '1') {
+						ch[i] = '0';
+					} else {
+						ch[i] = '1';
+						break;
+					}
+				}
+			}
+			
+		binString = new String(ch);
 		}
+
+		
 		return binString;
 	}
 
 }
-
