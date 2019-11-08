@@ -13,8 +13,8 @@ public class ANum {
 			if (i == b && i != a) {
 				if (!checked.contains(i))
 					checked.add(i);
-				if (!checked.contains(b))
-					checked.add(b);
+				if (!checked.contains(a))
+					checked.add(a);
 			}
 		}
 		System.out.println("Pairs: " + checked);
@@ -22,9 +22,12 @@ public class ANum {
 
 	public static int sumAllFactors(int a) {
 		int sum = 0;
-		for (int i = 1; i <= a; i++) {
+		for (int i = 1; i <= (int)(Math.sqrt(a)); i++) {
 			if (a % i == 0) {
 				sum += i;
+				if(i != a/i) {
+					sum += a/i;
+				}
 			}
 		}
 		return sum - a;
